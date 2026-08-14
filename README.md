@@ -47,7 +47,7 @@ ORDER.{D코드} ({국가} PO#{오더번호} {납기일}).pdf
 | 항목 | 출처 | 필수 |
 |---|---|:---:|
 | `D010125T000000` | 바이어가 보낸 **원본 첨부파일명** 안의 `D######T######` | ✅ |
-| `AUS` | PDF에 SYDNEY / MELBOURNE / BRISBANE / PERTH 언급 | ✅ * |
+| `AUS`/`NZ` | PDF에 SYDNEY / MELBOURNE / BRISBANE / PERTH(AUS) 또는 AUCKLAND(NZ) 언급 | ✅ * |
 | `10000000` | PDF의 `ORDER NUMBER` | ✅ |
 | `250115` | PDF의 `DLV CONS DATE` (dd/mm/yy → yymmdd) | ✅ |
 
@@ -120,12 +120,11 @@ STYLE PACK: 90000001 12AB34CDE567 SAMPLE PRODUCT DESCRIPTION
 
 ### 다른 국가 추가
 
-`ExtractCountry` 함수에 조건을 추가합니다.
+`ExtractCountry` 함수에 조건을 추가합니다. (AUCKLAND → `NZ`는 이미 반영되어 있습니다)
 
 ```vb
-If InStr(u, "AUCKLAND") > 0 Or InStr(u, "WELLINGTON") > 0 Then
-    ExtractCountry = "NZL"
-End If
+ElseIf InStr(u, "WELLINGTON") > 0 Then
+    ExtractCountry = "NZ"
 ```
 
 ### 다른 PO 양식 추가

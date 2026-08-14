@@ -664,7 +664,7 @@ End Function
 
 
 Private Function ExtractCountry(ByVal text As String) As String
-    ' 호주 4개 도시 중 하나라도 있으면 AUS
+    ' 호주 4개 도시 중 하나라도 있으면 AUS, 오클랜드가 있으면 NZ
     ' 다른 국가가 추가되면 이 함수에 규칙을 추가하세요.
     Dim u As String
     u = UCase$(text)
@@ -672,6 +672,8 @@ Private Function ExtractCountry(ByVal text As String) As String
     If InStr(u, "SYDNEY") > 0 Or InStr(u, "MELBOURNE") > 0 Or _
        InStr(u, "BRISBANE") > 0 Or InStr(u, "PERTH") > 0 Then
         ExtractCountry = "AUS"
+    ElseIf InStr(u, "AUCKLAND") > 0 Then
+        ExtractCountry = "NZ"
     Else
         ExtractCountry = ""
     End If
