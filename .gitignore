@@ -1,0 +1,20 @@
+# 실제 PO SHEET 파일 (거래처 정보 포함 - 절대 커밋 금지)
+*.pdf
+*.PDF
+
+# 로그
+PO_Log.txt
+*.log
+
+# 작업 폴더
+PO_Incoming/
+PO_SHEETS/
+
+# Office 임시 파일
+~$*
+*.tmp
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
